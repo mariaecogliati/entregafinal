@@ -1,0 +1,43 @@
+{% extends "padre.html" %}
+
+{% load static %}
+
+
+{% block contenido %}
+    <main class="container">
+        <h1 class="text-xl-center title"> Cursos </h1>
+
+        <a href="buscar_curso" class="btn btn-outline-success btn-sm">Buscar Curso</a>
+        <a href="alta_curso" class="btn btn-outline-success btn-sm">Nuevo Curso</a>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Comision</th>
+                </tr>            
+            </thead>
+            <tbody>
+                {% for n in cursos %}
+                <tr>
+                    <td>{{n.Nombre}}</td>
+                    <td>{{n.Comision}}</td>
+                    {% if user.is_authenticated %}
+                    <td><a href="{% url 'eliminar_curso' n.id %}" class="btn btn-outline-danger btn-sm">Borrar</a></td>
+                    <td><a href="{% url 'editar_curso'  n.id %}" class="btn btn-outline-warning btn-sm">Editar</a></td>
+                    {% endif %}
+                </tr>
+
+                {% endfor %}
+                
+            </tbody>
+
+
+        </table>
+
+
+
+    </main>
+    
+
+{% endblock %}

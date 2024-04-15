@@ -1,0 +1,22 @@
+{% extends "padre.html" %}
+
+{% load static %}
+
+
+{% block contenido %}
+
+    <form action="alta_alumno" method="POST">
+        {% csrf_token %}
+        <p>Nombre</p>
+        <input type="text" name="Nombre" required>
+        <p>Apellido</p>
+        <input type="text" name="Apellido" required>
+        <p>Documento</p>
+        <input type="text" name="Documento" required>
+        <button class="btn btn-outline-success btn-sm">Enviar</button>
+    </form>
+    
+
+
+
+{% endblock %}
